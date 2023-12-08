@@ -1,0 +1,7 @@
+.my__input{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: 2px solid green;
+    border-radius: 15px;
+}
