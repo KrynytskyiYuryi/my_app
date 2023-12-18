@@ -14,6 +14,8 @@ import Pagination from "../component/UI/Pagination/Pagination";
 import { useObserver } from "../Hooks/useObserver";
 import MyDiv from "../component/MyDiv";
 import MySelect from "../component/UI/Select/MySelect";
+import Sidebar from "../component/UI/Sidebar/Sidebar";
+import MyGrid from "../component/UI/MyGrid";
 
 function Posts() {
   const [posts, setPosts] = useState([]);
@@ -57,23 +59,27 @@ function Posts() {
       <MyModal visible={visible} setVisible={setVisible}>
         <PostForm create={createPost} />
       </MyModal>
-      <PostFilter filter={filter} setFilter={setFilter} />
-      <MySelect
-        value={limit}
-        onChange={(value) => setLimit(value)}
-        defaultValue={"Total element on page"}
-        options={[
-          { value: 5, name: "5" },
-          { value: 10, name: "10" },
-          { value: 20, name: "20" },
-          { value: -1, name: "Show all" },
-        ]}
-      />
-      <MyDiv>
-        <MyButton onClick={() => setVisible(true)}>Create post</MyButton>
-      </MyDiv>
-      {postError && <h2>{postError}</h2>}
-      <PostList remove={removePost} posts={sortedAndSearchedPost} />
+      <MyGrid>
+        <Sidebar>
+          <PostFilter filter={filter} setFilter={setFilter} />
+          <MySelect
+            value={limit}
+            onChange={(value) => setLimit(value)}
+            defaultValue={"Total element on page"}
+            options={[
+              { value: 5, name: "5" },
+              { value: 10, name: "10" },
+              { value: 20, name: "20" },
+              { value: -1, name: "Show all" },
+            ]}
+          />
+          <MyDiv>
+            <MyButton onClick={() => setVisible(true)}>Create post</MyButton>
+          </MyDiv>
+        </Sidebar>
+        {postError && <h2>{postError}</h2>}
+        <PostList remove={removePost} posts={sortedAndSearchedPost} />
+      </MyGrid>
       <hr ref={lastElement} />
       {isPostsLoading && <Loader />}
       <Pagination page={page} changePage={changePage} totalPages={totalPages} />

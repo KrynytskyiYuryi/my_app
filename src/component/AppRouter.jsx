@@ -6,7 +6,7 @@ import Log from "../Pages/Log";
 import { AuthContext } from "../Context/Context";
 
 const AppRouter = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { isAuth } = useContext(AuthContext);
   return isAuth ? (
     <BrowserRouter>
       <Navbar />

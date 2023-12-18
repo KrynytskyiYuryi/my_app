@@ -1,7 +1,8 @@
-.my__input{
+.my__input {
     width: 100%;
     padding: 10px 20px;
     margin: 10px 0;
-    border: 2px solid green;
+    border: 2px solid teal;
     border-radius: 15px;
+    font-weight: 700;
 }
